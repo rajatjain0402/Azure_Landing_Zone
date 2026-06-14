@@ -15,11 +15,14 @@ permissions:
 
 jobs:
   terraform:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - name: checkout code
         uses: actions/checkout@v4
+
+      - name: setup nodejs
+        uses: actions/setup-node@v4
         
       - name: setup-terraform
         uses: hashicorp/setup-terraform@v3
