@@ -1,0 +1,45 @@
+name: Terraform deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  terraform:
+    runs-on: self-hosted
+
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+        
+      - name: setup-terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: azure login
+        uses: azure/login@v2
+        with:
+          client-id: ${{secrets.AZURE_CLIENT_ID}}
+          client_secret: ${{secrets.AZURE_CLIENT_SECRET}}
+          tenant-id: ${{secrets.AZURE_TENANT_ID}}
+          subscription-id: ${{secrets.AZURE_SUBSCRIPTION_ID}}
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Validate
+        run: terraform validate
+
+      - name: Terraform Plan
+        run: terraform plan
+
+      - name: Terraform apply
+        run: terraform apply -auto-approve
+        
+
+        
+        
+
+    
+
+      
