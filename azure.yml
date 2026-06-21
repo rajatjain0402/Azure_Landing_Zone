@@ -1,0 +1,6 @@
+pool:
+  name: pool-personal
+  demands:
+  - agent.name -equals agent1
+
+  
