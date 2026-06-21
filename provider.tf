@@ -10,7 +10,7 @@ backend "azurerm" {
   resource_group_name = "rg-state"
   storage_account_name = "stgstatef"
   container_name = "container-state"
-  key = "ado.terraform.tfstate"
+  key = "qu.terraform.tfstate"
   }
 }
 
